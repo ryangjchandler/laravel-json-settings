@@ -1,4 +1,4 @@
-# Store your Laravel application settings in a version-controlled JSON file.
+# Store your Laravel application settings in an on-disk JSON file.
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/ryangjchandler/laravel-json-settings.svg?style=flat-square)](https://packagist.org/packages/ryangjchandler/laravel-json-settings)
 [![GitHub Tests Action Status](https://img.shields.io/github/workflow/status/ryangjchandler/laravel-json-settings/run-tests?label=tests)](https://github.com/ryangjchandler/laravel-json-settings/actions?query=workflow%3Arun-tests+branch%3Amain)
@@ -6,6 +6,7 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/ryangjchandler/laravel-json-settings.svg?style=flat-square)](https://packagist.org/packages/ryangjchandler/laravel-json-settings)
 
 This package provides a simple `SettingsRepository` class that can be used to store your application's settings in a single JSON file.
+
 ## Installation
 
 You can install the package via composer:
