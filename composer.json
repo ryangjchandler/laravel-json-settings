@@ -1,6 +1,6 @@
 {
     "name": "ryangjchandler/laravel-json-settings",
-    "description": "Store your Laravel application settings in a version-controlled JSON file.",
+    "description": "Store your Laravel application settings in an on-disk JSON file.",
     "keywords": [
         "ryangjchandler",
         "laravel",
