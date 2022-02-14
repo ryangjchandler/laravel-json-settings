@@ -2,6 +2,8 @@
 
 namespace RyanChandler\LaravelJsonSettings;
 
+use Illuminate\Cache\TaggedCache;
+use Illuminate\Contracts\Cache\Repository;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\File;
@@ -28,13 +30,15 @@ class SettingsRepository
         return Arr::get($this->settings, $key, $default);
     }
 
-    public function set(string $key, mixed $value, bool $save = true): void
+    public function set(string $key, mixed $value, bool $save = true): static
     {
         Arr::set($this->settings, $key, $value);
 
         if ($save) {
             $this->save();
         }
+
+        return $this;
     }
 
     public function has(string|array $keys): bool
@@ -42,11 +46,26 @@ class SettingsRepository
         return Arr::has($this->settings, $keys);
     }
 
-    public function save(int $flags = 0): void
+    public function save(int $flags = 0): static
     {
         File::put($this->path, json_encode($this->settings, JSON_PRETTY_PRINT | $flags));
 
-        Cache::forget($this->getCacheKey());
+        $this->forget();
+
+        return $this;
+    }
+
+    public function reload(): static
+    {
+        $this->forget();
+        $this->load();
+
+        return $this;
+    }
+
+    protected function forget(): void
+    {
+        $this->getCacheStore()->forget($this->getCacheKey());
     }
 
     public function getPath(): string
@@ -64,9 +83,14 @@ class SettingsRepository
         return config('json-settings.cache.tag');
     }
 
+    protected function getCacheStore(): TaggedCache|Repository
+    {
+        return $this->getCacheTag() ? Cache::tags($this->getCacheTag()) : Cache::store();
+    }
+
     protected function load(): void
     {
-        $this->settings = ($this->getCacheTag() ? Cache::tags($this->getCacheTag()) : Cache::store())
+        $this->settings = $this->getCacheStore()
             ->rememberForever($this->getCacheKey(), function () {
                 return json_decode(File::get($this->path), true);
             });
