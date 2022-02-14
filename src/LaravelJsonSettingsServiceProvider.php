@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton;
+namespace RyanChandler\LaravelJsonSettings;
 
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use VendorName\Skeleton\Commands\SkeletonCommand;
+use RyanChandler\LaravelJsonSettings\Commands\LaravelJsonSettingsCommand;
 
-class SkeletonServiceProvider extends PackageServiceProvider
+class LaravelJsonSettingsServiceProvider extends PackageServiceProvider
 {
     public function configurePackage(Package $package): void
     {
@@ -16,10 +16,10 @@ class SkeletonServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('skeleton')
+            ->name('laravel-json-settings')
             ->hasConfigFile()
             ->hasViews()
-            ->hasMigration('create_skeleton_table')
-            ->hasCommand(SkeletonCommand::class);
+            ->hasMigration('create_laravel-json-settings_table')
+            ->hasCommand(LaravelJsonSettingsCommand::class);
     }
 }
