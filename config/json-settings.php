@@ -14,4 +14,20 @@ return [
 
     'path' => storage_path('settings.json'),
 
+    /*
+    |--------------------------------------------------------------------------
+    | Cache
+    |--------------------------------------------------------------------------
+    |
+    | Your settings will be cached indefinitely until a value changes. You can
+    | use these configuration options to change the cache key and the tag that
+    | gets used.
+    |
+    */
+
+    'cache' => [
+        'key' => 'json-settings',
+        'tag' => null,
+    ],
+
 ];
