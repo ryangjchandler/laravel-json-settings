@@ -1,11 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\File;
-use RyanChandler\LaravelJsonSettings\Facades\Settings;
-use RyanChandler\LaravelJsonSettings\SettingsRepository;
-
 use function PHPUnit\Framework\assertFileExists;
-use function PHPUnit\Framework\assertTrue;
+
+use RyanChandler\LaravelJsonSettings\SettingsRepository;
 
 it('can be resolved from the container', function () {
     expect(app(SettingsRepository::class))->toBeInstanceOf(SettingsRepository::class);
