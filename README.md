@@ -18,7 +18,7 @@ composer require ryangjchandler/laravel-json-settings
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag="laravel-json-settings-config"
+php artisan vendor:publish --tag="json-settings-config"
 ```
 
 ## Usage
