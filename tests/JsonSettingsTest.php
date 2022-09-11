@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\File;
+
 use function PHPUnit\Framework\assertFileExists;
 
 use RyanChandler\LaravelJsonSettings\SettingsRepository;
